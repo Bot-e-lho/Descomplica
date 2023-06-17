@@ -1,0 +1,26 @@
+/*
+Faca um programa que leia do usuario o tamanho de um vetor a ser lido e faca a alocacao
+dinamica de memoria. Em seguida, leia do usuario seus valores e imprima o vetor lido.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+int n, i, valor;
+printf("Informe o tamanho: ");
+scanf("%d",&n);
+int *vetor = (int *) malloc(n*sizeof(int));
+if (vetor == NULL) {
+printf("Erro.\n\n");
+exit(1);
+}
+printf("Informe os valores:\n");
+for(i=0; i printf("Valor[%d]: ",i);
+scanf("%d",&vetor[i]);
+}
+printf("Conteudo do vetor:\n");
+for(i=0; i printf("%d ",vetor[i]);
+}
+free(vetor);
+system("pause");
+}
