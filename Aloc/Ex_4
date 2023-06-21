@@ -1,0 +1,72 @@
+/* Fac¸a um programa que:
+(a) Pec¸a para o usuario entrar com o nome e a posic¸ ´ ao (coordenadas X e Y) de N ˜
+cidades e as armazene em um vetor de estruturas (N e informado pelo usu ´ ario); ´
+(b) Crie uma matriz de distancias entre cidades de tamanho N x N; ˆ
+(c) Calcule as distancia entre cada duas cidades e armazene na matriz; ˆ
+(d) Exiba na tela a matriz de distancias obtida; ˆ
+3
+(e) Quando o usuario digitar o n ´ umero de duas cidades o programa dever ´ a retornar a ´
+distancia entre elas.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define TAM 50
+
+typedef struct coord{
+int x;
+int y;
+}coord;
+
+typedef struct cidade{
+char nome[TAM];
+coord a;
+}cidade;
+int distancia(coord n, coord m);
+
+int main(){
+    int qntd;
+    
+    printf("\nInforme a quantidade de cidades:\n");
+    scanf("%d", &qntd);
+    cidade* aloca = (cidade*)malloc(qntd * sizeof(cidade));
+    
+    int calcdist[qntd][qntd];
+    for(int i = 0; i < qntd; i++){
+        printf("\nInforme as coordenadas (x,y) da cidade [%d]:\n", i+1);
+        scanf("%d %d", &aloca[i].a.x, &aloca[i].a.y);
+        printf("\nInforme o nome da cidade:\n");
+        //scanf("%[^\n]s", aloca[i].nome);
+        fscanf(stdin, "%s", aloca[i].nome);
+        getchar();
+
+    }
+    for(int i = 0; i < qntd; i++){
+        for(int j = 0; j < qntd; j++){
+          calcdist[i][j] = distancia(aloca[i].a, aloca[j].a);
+        }
+    }
+    printf("\n\n");
+ //   printf("Distancias:\n");
+ //   for (int i = 0; i < qntd; i++) {
+ //       for (int j = 0; j < qntd; j++) {
+ //          printf("%.2d\t ", calcdist[i][j]);
+ //       }
+ //       printf("\n");
+ //   }
+ //   printf("\n");
+    int tmp1, tmp2;
+    printf("\nDigite o numero de duas cidades (1 a %d): ", qntd);
+    scanf("%d %d", &tmp1, &tmp2);
+
+    double dist = distancia(aloca[tmp1 - 1].a, aloca[tmp2 - 1].a);
+    printf("\nA distancia entre as cidades %s e %s eh: %.2lf\n", aloca[tmp1 - 1].nome, aloca[tmp2 - 1].nome, dist);
+    free(aloca);
+    return 0;
+}
+int distancia(coord n, coord m){
+    int dx = (m.x - n.x);
+    int dy = (m.y - n.y);
+    return sqrt(pow(dx, 2) + pow(dy, 2));
+}
