@@ -1,0 +1,52 @@
+/*Considere a seguinte declarac¸ ˜ao: int A, *B, **C, ***D; Escreva um programa que leia a
+vari ´avel a e calcule e exiba o dobro, o triplo e o qu ´adruplo desse valor utilizando apenas
+os ponteiros B, C e D. O ponteiro B deve ser usada para calcular o dobro, C o triplo e D
+o qu ´adruplo*/
+/*#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    int A, *B, **C, ***D;
+
+    printf("\nInforme um número:\n");
+    scanf("%d", &A);
+    B = &A;
+    C = &B;
+    D = &C;
+    printf("\nValor original: %d\n", A);
+    printf("\nO dobro: %d\n", *B*2);
+    printf("\nO triplo: %d\n", *(*C)*3);
+    printf("\nO quadruplo: %d\n", *(*(*D))*4);
+
+    return 0;
+}
+*/
+/*mplemente uma func¸ ˜ao que calcule a ´area da superf´ıcie e o volume de uma esfera de
+raio R. Essa func¸ ˜ao deve obedecer ao prot ´otipo:
+void calc_esfera(float R, float *area, float *volume);
+A ´area da superf´ıcie e o volume s ˜ao dados, respectivamente, por:
+A = 4 ∗ p ∗ R^2
+V = 4/3 ∗ p ∗ R^3*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define pi 3.14
+void calc_esfera(float R, float *area, float *volume);
+
+int main(){
+    float raio;
+    float area = 0;
+    float volume = 0;
+
+    printf("\nInforme o raio:\n");
+    scanf("%f", &raio);
+    calc_esfera(raio, &area, &volume);
+    printf("\n%.2f\n%.2f\n", area, volume);
+    return 0;
+}
+
+void calc_esfera(float R, float *area, float *volume){
+    *area = 4 * pi * pow(R, 2);
+    *volume = (4 * pi * pow(R, 3))/3;
+
+}
