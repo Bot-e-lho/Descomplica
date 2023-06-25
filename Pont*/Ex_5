@@ -1,0 +1,39 @@
+/*Implemente uma func¸ ˜ao que receba como par ˆametro um array de n ´umeros reais de
+tamanho N e retorne quantos n ´umeros negativos h ´a nesse array. Essa func¸ ˜ao deve
+obedecer ao prot ´otipo:
+int negativos(float *vet, int N);*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int negativos(float *vet, int N);
+
+int main(){
+	int n;
+	printf("\nInforme o tamanho do array: ");
+	scanf("%d", &n);
+	float *vet = (float*)malloc(n * sizeof(float));
+	if(vet == NULL){
+		printf("\nErro ao alocar.");
+		exit(1);
+	}
+	for(int i = 0; i < n; i++){
+		printf("\nInforme o valor[%d]: ", i+1);
+		scanf("%f", &vet[i]);
+	}
+
+	int qntd_neg = negativos(vet, n);
+	printf("\nO array possui %d numeros negativos.\n", qntd_neg);
+	free(vet);
+	return 0;
+}
+
+int negativos(float *vet, int N){
+	int qnt_neg = 0;
+	for(int i = 0; i < N; i++){
+		if(vet[i] < 0){
+			qnt_neg = qnt_neg + 1;
+		}
+	}
+	return qnt_neg;
+}
