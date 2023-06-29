@@ -1,0 +1,23 @@
+/*Escreva um programa que contenha duas vari ´aveis inteiras. Compare seus enderec¸os e
+exiba o maior enderec¸o.*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int* val1 = (int*)malloc(sizeof(int));
+	int* val2 = (int*)malloc(sizeof(int));
+	printf("\n%p", val1);
+	printf("\n%p\n", val2);
+	printf("\n\n");
+	if(val1 != val2){
+		if(val1 > val2){
+			printf("Maior endereco: %p\n", (void*)val1);
+		}else{
+			printf("Maior endereco: %p\n", (void*)val2);
+		}
+	}
+	free(val1);
+	free(val2);
+	return (0);
+}
