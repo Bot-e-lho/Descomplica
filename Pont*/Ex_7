@@ -1,0 +1,31 @@
+/*Faca um programa em C que leia 2 valores inteiros e chame uma funcao que receba estas
+2 variaveis e troque o seu conteudo, ou seja, esta funcao é chamada passando duas
+variaveis A e B por exemplo e, apos a execucao da funcao, A contera o valor de B e B tera o valor de A.*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void trocavariavel(int* val1, int* val2);
+
+int main(){
+    int a, b;
+
+    printf("\nInforme um valor: ");
+    scanf("%d", &a);
+    printf("\nInforme outro valor: ");
+    scanf("%d", &b);
+
+    printf("\nValor antes da troca:\nValor 1: %d\nValor 2: %d\n", a, b);
+
+    trocavariavel(&a, &b);
+
+    printf("\nValor depois da troca:\nValor 1: %d\nValor 2: %d\n", a, b);
+
+
+}
+
+void trocavariavel(int* val1, int* val2){
+    int temp = *val1;
+    *val1 = *val2;
+    *val2 = temp;
+}
